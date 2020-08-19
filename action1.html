@@ -1,0 +1,13 @@
+<?php
+$nob=$_POST["nos"];
+$host="localhost";
+$dbusername="root";
+$dbpassword="";
+$dbname="db";
+$conn= new mysqli($host,$dbusername,$dbpassword,$dbname);
+$UPDATE="UPDATE train_log Set Seats=Seats-(?)";
+$stmt=$conn->prepare($UPDATE);
+$stmt->bind_param("i",$nob);
+$stmt->execute();
+echo "Reserved";
+?>
